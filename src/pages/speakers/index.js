@@ -5,17 +5,14 @@ import Card from "@/components/Card";
 import SpeakerContext from "@/context/speakerContext";
 
 const Speakers = () => {
-
   const speakers = useContext(SpeakerContext);
 
-  console.log("Speakers on speakers are: ", speakers)
   return (
-    <div>
+    <div className="bg-red-300 h-screen">
       <Header />
-      <h1>This is the Speakers section</h1>
-      <div className="grid grid-cols-3 gap-3">
-        {speakers.map((speaker) => {
-          <Card key={speaker.id} stage={speaker} />;
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gap-3">
+        {speakers.map((item) => {
+          return <Card key={item.id} stage={item} />;
         })}
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function Home() {
       <Head>
         <title>Speakers</title>
       </Head>
-      <main className={`${popps.className}`}>
+      <main className={`${popps.className} bg-slate-400 h-screen`}>
         <div>
           <Header />
         </div>
