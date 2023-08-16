@@ -1,25 +1,42 @@
-import Image from "next/image";
-import { Poppins } from "next/font/google";
-import Header from "@/components/Header";
 import Head from "next/head";
+import React, {Component} from "react";
+class Home extends Component {
+  static async getInitialProps(){
+    return({
+      time: new Date().toString()
+    })
+  }
+  constructor(props){
+    super(props);
+    this.state = {
+      time: props.time
+    }
+  }
 
-const popps = Poppins({
-  subsets: ["devanagari"],
-  weight: ["200", "400", "600"],
-});
-
-export default function Home() {
-  return (
+  tic() {
+    this.setState({
+      time: new Date().toString()
+    })
+  }
+  componentDIdMount(){
+    this.interval = setInterval(()=> this.tic(), 1000);
+  }
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
+  render() { 
+    return (
     <>
       <Head>
-        <title>Speakers</title>
+        <title>Server</title>
       </Head>
-      <main className={`${popps.className} bg-slate-400 h-screen`}>
-        <div>
-          <Header />
-        </div>
-        <h1>This is the Homepage</h1>
+      <main className="bg-slate-400 h-screen">
+        <h1>{this.state.time}</h1>
       </main>
     </>
-  );
+
+    );
+  }
 }
+ 
+export default Home;
